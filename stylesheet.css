@@ -1,10 +1,10 @@
+h1 {
+    text-align: center;
+}
+
 .container {
     padding-bottom: 2em;
     background-color: #efefef;
-}
-
-h1 {
-    text-align: center;
 }
 
 .history {
