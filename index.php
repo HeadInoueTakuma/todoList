@@ -8,33 +8,35 @@
     <!-- bootstrap CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <style type=text/css>
-        div#main {
-            padding: 10px;
+        .container {
+            padding-bottom: 2em;
             background-color: #efefef;
         }
-        
+
         h1 {
             text-align: center;
         }
 
-        h2 {
-            padding-top: 2em;
+        .history {
+            text-align: center;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div id="main">
-
-
+    <div class="main">
+        <div class="container">
             <h1>ToDo App</h1>
+        </div>
+        <div class="container">
             <h2>現在の日付</h2>
-            <?php
-            echo date('Y/m/d') . "<br/>\n";
-            ?>
-
-            <p><a href="#">履歴</a></p>
+            <div class="alert alert-primary">
+                <?php
+                echo date('Y/m/d') . "<br/>\n";
+                ?>
+            </div>
+        </div>
+        <div class="container">
             <h2>投稿フォーム</h2>
 
 
@@ -78,7 +80,9 @@
                 </div>
                 <button class="btn btn-primary" type="submit">投稿</button>
             </form>
+        </div>
 
+        <div class="container">
             <h2>ToDoリスト</h2>
             <?php
             // DBからデータを取得する
@@ -106,6 +110,9 @@
                     </tr>
                 <?php } ?>
             </table>
+        </div>
+        <div class="container history">
+            <p><a href="#">履歴</a></p>
         </div>
     </div>
 </body>
