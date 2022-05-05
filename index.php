@@ -19,12 +19,11 @@
 
 
     <?php
-
-    //例外処理
-    try {
-         // DBに接続するためのPDOオブジェクトを作成
-        $pdo = new PDO("mysql:host=localhost;dbname=lesson;charset-utf8", "root", "root");
-        
+        $pdo = new PDO("mysql:host=localhost;dbname=lesson;charset=utf8", "root", "root");
+    if (isset($_POST["content"])) {
+        //例外処理
+        try {
+            // DBに接続するためのPDOオブジェクトを作成
             $content = $_POST["content"];
     
             // DBに書き込みたい形にsqlを指定
@@ -41,13 +40,16 @@
     
             // executeメソッドでプリペアドステートメントを実行する
             $stmt->execute();
-    } catch (PDOException $e) {
-        //エラー出力
-        echo "データベースエラー（PDOエラー）";
-        //エラーの詳細を調べたい時はコメントアウトを外す
-        var_dump($e->getMessage());
+            header('Location: ./');
+            exit;
+        } catch (PDOException $e) {
+            //エラー出力
+            echo "データベースエラー（PDOエラー）";
+            //エラーの詳細を調べたい時はコメントアウトを外す
+            var_dump($e->getMessage());
+        }
     }
-    // print_r($_POST);
+
     ?>
 
 
@@ -58,21 +60,31 @@
     </form>
 
     <h2>ToDoリスト</h2>
+    <?php
+    // DBからデータを取得する
+    $sql = "SELECT * FROM todolist ORDER BY updated_at;";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    ?>
     <table>
         <tr>
             <th>ID</th>
             <th>タイトル</th>
-            <th>期限</th>
-            <th>期限</th>
-            <th></th>
+            <th>投稿日時</th>
         </tr>
-        <tr>
-            <td>test ID</td>
-            <td>test title</td>
-            <td>test deadline</td>
-            <td>test deadline</td>
-            <td><a href="#">詳細</a></td>
-        </tr>
+        <?php
+        // DBのデータを表示
+        // フェッチモードを使用
+        // フェッチモードはPDOでDBからデータを取り出した時”配列の形式を指定するモード”
+        // FETCH_ASSOCはどのようにデータを取得するか
+        // FETCH_ASSOCはカラム名のみ取得
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+            <tr>
+                <td><?= $row["id"] ?></td>
+                <td><?= $row["content"] ?></td>
+                <td><?= $row["updated_at"] ?></td>
+            </tr>
+        <?php } ?>
     </table>
 </body>
 
