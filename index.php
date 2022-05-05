@@ -7,113 +7,23 @@
     <title>Document</title>
     <!-- bootstrap CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <style type=text/css>
-        .container {
-            padding-bottom: 2em;
-            background-color: #efefef;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        .history {
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 
 <body>
-    <div class="main">
-        <div class="container">
-            <h1>ToDo App</h1>
-        </div>
-        <div class="container">
-            <h2>現在の日付</h2>
-            <div class="alert alert-primary">
-                <?php
-                echo date('Y/m/d') . "<br/>\n";
-                ?>
-            </div>
-        </div>
-        <div class="container">
-            <h2>投稿フォーム</h2>
+    <?php
+    // DB設定の読込
+    require_once 'db_conect.php';
+    // ヘッダの読込
+    require_once './views/header.tpl.php';
+    // フォームの読込
+    require_once './views/form.tpl.php';
+    // 記事一覧の読込
+    require_once './views/index.tpl.php';
+    ?>
 
-
-            <?php
-            $pdo = new PDO("mysql:host=localhost;dbname=lesson;charset=utf8", "root", "root");
-            if (isset($_POST["content"])) {
-                //例外処理
-                try {
-                    // DBに接続するためのPDOオブジェクトを作成
-                    $content = $_POST["content"];
-
-                    // DBに書き込みたい形にsqlを指定
-                    $sql  = "INSERT INTO todolist (content, updated_at) VALUES (:content, NOW());";
-
-                    // $stmt変数にprepareメソッドを実行
-                    $stmt = $pdo->prepare($sql);
-
-                    // bindValueでsqlに渡す値を指定
-                    // bindValueはプリペアドステートメントで使用するSQL文の中で変数の値を紐づける為の関数
-                    // プリペアドステートメントはSQL文に対して変更が効くようにする為の機能
-                    // $stmtはphpでの慣習でstatementの略
-                    $stmt->bindValue(":content", $content, PDO::PARAM_STR);
-
-                    // executeメソッドでプリペアドステートメントを実行する
-                    $stmt->execute();
-                    header('Location: ./');
-                    exit;
-                } catch (PDOException $e) {
-                    //エラー出力
-                    echo "データベースエラー（PDOエラー）";
-                    //エラーの詳細を調べたい時はコメントアウトを外す
-                    var_dump($e->getMessage());
-                }
-            }
-            ?>
-
-            <form class="form" action="index.php" method="post">
-                <div class="form-group">
-                    <label class="control-label">投稿内容</label>
-                    <input class="form-control" type="text" name="content">
-                </div>
-                <button class="btn btn-primary" type="submit">投稿</button>
-            </form>
-        </div>
-
-        <div class="container">
-            <h2>ToDoリスト</h2>
-            <?php
-            // DBからデータを取得する
-            $sql = "SELECT * FROM todolist ORDER BY updated_at;";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute();
-            ?>
-            <table class="table table-striped">
-                <tr>
-                    <th>ID</th>
-                    <th>タイトル</th>
-                    <th>投稿日時</th>
-                </tr>
-                <?php
-                // DBのデータを表示
-                // フェッチモードを使用
-                // フェッチモードはPDOでDBからデータを取り出した時”配列の形式を指定するモード”
-                // FETCH_ASSOCはどのようにデータを取得するか
-                // FETCH_ASSOCはカラム名のみ取得
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
-                    <tr>
-                        <td><?= $row["id"] ?></td>
-                        <td><?= $row["content"] ?></td>
-                        <td><?= $row["updated_at"] ?></td>
-                    </tr>
-                <?php } ?>
-            </table>
-        </div>
-        <div class="container history">
-            <p><a href="#">履歴</a></p>
-        </div>
+    <div class="container history">
+        <p><a href="#">履歴</a></p>
     </div>
 </body>
 
