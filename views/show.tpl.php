@@ -1,10 +1,11 @@
 <div class="container">
-<h2>詳細情報</h2>
+    <h2>詳細情報</h2>
     <table class="table table-striped">
         <tr>
             <th>ID</th>
             <th>タイトル</th>
             <th>投稿日時</th>
+            <th></th>
         </tr>
         <?php
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
@@ -14,6 +15,9 @@
                 </td>
                 <td><?= $row["content"] ?></td>
                 <td><?= $row["updated_at"] ?></td>
+                <td>
+                    <a class="btn btn-primary" href="destroy.php?id=<?= $row["id"] ?>">削除</a>
+                </td>
             </tr>
         <?php } ?>
     </table>
