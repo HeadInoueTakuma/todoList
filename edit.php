@@ -16,4 +16,4 @@ $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 // SQL実行
 $row = $stmt->execute();
 
-require_once './views/show.tpl.php';
+require_once './views/edit.tpl.php';

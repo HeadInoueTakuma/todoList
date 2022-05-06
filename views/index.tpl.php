@@ -9,7 +9,7 @@
     <table class="table table-striped">
         <tr>
             <th>ID</th>
-            <th>タイトル</th>
+            <th>内容</th>
             <th>投稿日時</th>
             <th></th>
         </tr>
@@ -25,7 +25,7 @@
                 <td><?= $row["content"] ?></td>
                 <td><?= $row["updated_at"] ?></td>
                 <td>
-                    <a class="btn btn-primary" href="show.php?id=<?= $row["id"] ?>">詳細</a>
+                    <a class="btn btn-success" href="edit.php?id=<?= $row["id"] ?>">編集</a>
                 </td>
             </tr>
         <?php } ?>
