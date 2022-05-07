@@ -17,8 +17,10 @@
         </tr>
     </table>
 
-    <a class="btn btn-success" href="#">更新</a>
-    <a class="btn btn-danger" href="destroy.php?id=<?= $result["id"] ?>">削除</a>
+    <div class="text-right">
+        <a class="btn btn-success" href="#">更新</a>
+        <a class="btn btn-danger" href="destroy.php?id=<?= $result["id"] ?>">削除</a>
+    </div>
 </div>
 <div class="container footer">
     <a class="btn btn-primary" href="index.php">一覧画面</a>

@@ -21,3 +21,7 @@ h1 {
 .footer a{
     margin: 0 1em;
 }
+
+.btn-danger {
+    margin-left: 2em;
+}
