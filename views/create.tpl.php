@@ -9,6 +9,7 @@
     </form>
 </div>
 
-<div class="container">
-    <a class="btn btn-primary" href="index.php">一覧画面</a>
+<div class="container footer">
+<a class="btn btn-primary" href="index.php">一覧画面</a>
+    <a class="btn btn-primary" href="#">履歴一覧</a>
 </div>

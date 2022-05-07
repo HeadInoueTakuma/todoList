@@ -3,6 +3,21 @@ h1 {
 }
 
 .container {
-    padding-bottom: 2em;
+    padding: 2em 2em;
     background-color: #efefef;
+}
+
+.header {
+    padding-top: 2em;
+    background-color: #777777;
+    color: #ffffff;
+}
+
+.footer {
+    text-align: center;
+    background-color: #777777;
+}
+
+.footer a{
+    margin: 0 1em;
 }

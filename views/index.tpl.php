@@ -31,9 +31,7 @@
         <?php } ?>
     </table>
 </div>
-<div class="container">
+<div class="container footer">
     <a class="btn btn-primary" href="create.php">新規投稿</a>
-</div>
-<div class="container">
     <a class="btn btn-primary" href="#">履歴一覧</a>
 </div>

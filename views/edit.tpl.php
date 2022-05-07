@@ -1,27 +1,26 @@
 <div class="container">
-    <h2>詳細情報</h2>
+    <h2>投稿を修正</h2>
     <table class="table table-striped">
         <tr>
             <th>ID</th>
-            <th>内容</th>
-            <th>投稿日時</th>
-            <th></th>
+            <td>
+                <?= $result["id"] ?>
+            </td>
         </tr>
-        <?php
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
-            <tr>
-                <td>
-                    <?= $row["id"] ?>
-                </td>
-                <td><?= $row["content"] ?></td>
-                <td><?= $row["updated_at"] ?></td>
-                <td>
-                    <a class="btn btn-danger" href="destroy.php?id=<?= $row["id"] ?>">削除</a>
-                </td>
-            </tr>
-        <?php } ?>
+        <tr>
+            <th>投稿日時</th>
+            <td><?= $result["updated_at"] ?></td>
+        </tr>
+        <tr>
+            <th>詳細内容</th>
+            <td><?= $result["content"] ?></td>
+        </tr>
     </table>
+
+    <a class="btn btn-success" href="#">更新</a>
+    <a class="btn btn-danger" href="destroy.php?id=<?= $result["id"] ?>">削除</a>
 </div>
-<div class="container">
+<div class="container footer">
     <a class="btn btn-primary" href="index.php">一覧画面</a>
+    <a class="btn btn-primary" href="#">履歴一覧</a>
 </div>

@@ -16,4 +16,7 @@ $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 // SQL実行
 $row = $stmt->execute();
 
+// 返された各カラムを$result変数に格納
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
+
 require_once './views/edit.tpl.php';

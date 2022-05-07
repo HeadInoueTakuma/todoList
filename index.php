@@ -1,5 +1,5 @@
 <?php
-// headの読込
+// head,headerの読込
 require_once './views/head.tpl.php';
 
 // DB設定の読込

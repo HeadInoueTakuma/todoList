@@ -37,3 +37,4 @@ if (isset($_POST["content"])) {
         var_dump($e->getMessage());
     }
 }
+
