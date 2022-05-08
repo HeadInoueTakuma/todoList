@@ -4,6 +4,8 @@
         <div class="form-group">
             <label class="control-label">内容</label>
             <input class="form-control" type="text" name="content">
+            <label class="control-label">期限</label>
+            <input class="form-control" type="date" name="term">
         </div>
         <button class="btn btn-primary" type="submit">投稿</button>
     </form>

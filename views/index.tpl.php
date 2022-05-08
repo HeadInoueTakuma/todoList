@@ -11,6 +11,7 @@
             <th>ID</th>
             <th>内容</th>
             <th>投稿日時</th>
+            <th>期限</th>
             <th></th>
         </tr>
         <?php
@@ -24,6 +25,7 @@
                 <td><?= $row["id"] ?></td>
                 <td><?= $row["content"] ?></td>
                 <td><?= $row["updated_at"] ?></td>
+                <td><?= $row["term"] ?></td>
                 <td>
                     <a class="btn btn-success" href="edit.php?id=<?= $row["id"] ?>">編集</a>
                 </td>
