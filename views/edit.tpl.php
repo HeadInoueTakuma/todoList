@@ -16,11 +16,18 @@
             <td><?= $result["content"] ?></td>
         </tr>
     </table>
-
-    <div class="text-right">
-        <a class="btn btn-success" href="#">更新</a>
-        <a class="btn btn-danger" href="destroy.php?id=<?= $result["id"] ?>">削除</a>
-    </div>
+    <!--  -->
+    <form class="form" action="update.php" method="post">
+        <div class="form-group">
+            <input type="hidden" name="id" value=" <?= $result["id"] ?>">
+            <label class="control-label">編集</label>
+            <input class="form-control" type="text" name="content" value="<?= $result["content"] ?>">
+        </div>
+        <div class="text-right">
+            <button class="btn btn-success" type="submit">更新</button>
+            <a class="btn btn-danger" href="destroy.php?id=<?= $result["id"] ?>">削除</a>
+        </div>
+    </form>
 </div>
 <div class="container footer">
     <a class="btn btn-primary" href="index.php">一覧画面</a>
